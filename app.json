@@ -1,0 +1,13 @@
+{
+name: "trendingapi",
+description: "MongoDB with Mongoose on Node.js example",
+repository: "https://github.com/rohtash/nodejs.git",
+keywords: [
+"node",
+"mongoose",
+"ODM"
+],
+addons: [
+"mongolab"
+]
+}

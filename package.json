@@ -1,0 +1,42 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~4.9.0",
+    "body-parser": "~1.8.1",
+    "express-session":"latest",
+    "jade":"latest",
+    "morgan":"latest",
+    "multer":"latest",
+    "method-override":"latest",
+    "serve-favicon":"latest",
+    "errorhandler":"latest",
+    "mongoose":"latest",
+    "async":"latest",
+    "fs":"latest",
+    "winston":"latest",
+    "cookie-parser": "latest",
+    "ejs": "latest",
+    "body-parser": "latest",
+    "passport" : "~0.1.17",
+    "passport-local" : "~0.1.6",
+    "passport-facebook" : "~1.0.2",
+    "passport-twitter" : "~1.0.2",
+    "passport-google-oauth" : "~0.1.5",
+    "connect-flash": "latest",
+    "bcrypt-nodejs" : "latest"
+
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rohtash/nodejs.git"
+  },
+
+  "homepage": "https://github.com/rohtash/nodejs"
+}
