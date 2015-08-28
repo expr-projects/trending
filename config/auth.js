@@ -1,6 +1,7 @@
 // config/auth.js
 
-// module.exports = {
+module.exports =
+// {
 //
 //     'facebookAuth' : {
 //         'clientID'        : '1504997639830767', // your App ID
