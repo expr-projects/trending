@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
-var Category = require('../models/trendings').Category;
-var a={};
-a = Category.find().exec(function(req ,rep,next){});
+var Category = require('../models/dbmodel').Category;
 
 router.get('/', function(request, response) {
-  response.setHeader('Content-Type', 'application/json');
-      response.send(JSON.stringify(a));
-  });
+          response.setHeader('Content-Type', 'application/json');
+          Category.find().exec(function(req ,res,next){
+          response.send(JSON.stringify(res));
+        });
+});
 
 module.exports = router;

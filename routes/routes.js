@@ -1,8 +1,9 @@
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 var express= require('express');
 var router = express.Router();
 var users = require('../routes/users');
 var post =require('../routes/post');
+var menulist =require('../routes/appcategory');
 var category =require('../routes/category');
 module.exports = function(app, passport) {
 
@@ -11,7 +12,8 @@ module.exports = function(app, passport) {
     app.get('/', function(req, res) {
         res.render('index.ejs');
     });
-    app.use('/users',isLoggedIn,users);
+    app.use('/menulist',menulist);
+    app.use('/users',users);
     app.use('/post',isLoggedIn,post);
     app.use('/category',isLoggedIn,category);
 
