@@ -45,65 +45,68 @@ var appCategorySchema =  new Schema({
                      artist   : {type : String ,required :true},
                      albums   : {type : String ,required :true},
                      songs    : {type : String ,required :true}
-                   }
+                    },
+            hisaab : {
+                     groups : {type : String ,required :true},
+                     balance   : {type : String ,required :true}
+                   },
+            trending :
+                {
+                      types :
+                      {
+                            politics        : {type : String ,required :true},
+                            entertainment   : {type : String ,required :true},
+                            sports          : {type : String ,required :true},
+                            science         : {type : String ,required :true},
+                            health          : {type : String ,required :true}
+                      }
+                }
+
 
     }
 
 });
 
-var categorySchema = new Schema({
-    categories : [{
-                  name :  {type : String ,required :true}
-                 }]
+var drawerListSchema = new Schema({
+    app : {
+                  name1 :  {type : String ,required :true}
+          }
 });
 
-var postSchema = new Schema({
+var trendingListSchema = new Schema({
      category : { type: String, required: true}
-    ,creationDate : {type : Date, required :true}
-    ,quetions :[{
+    ,creationDate : {type : Date}
+    ,quetions :{
               qId : {type : String ,required :true}
              ,postedById : {type : String , required :true}
              ,description : {type : String ,required :true}
-             ,answers :[{
-                        postedById : {type : String , required :true}
-                       ,description :{type :String ,required :true}
+             ,answers :{
+                        postedById : {type : String }
+                       ,description :{type :String }
                        ,date : {type :Date}
-                      }]
-            }]
+                     }
+            }
 
 });
 
-var loggingSchema = new Schema({
+var dbLoggingSchema = new Schema({
       logTime          : { type: Date, required: true, default : Date.now()}
     , token 			 : { type: String, required: true, index: { unique: true }}
     , transactionType  : { type: String}
     , expiryDate       : { type: String}
 });
 
-var lViewSchema = new Schema({
-      name            : { type: String}
-    , description     : { type: String}
-});
-
-var gViewSchema = new Schema({
-     name            : { type: String}
-   , description     : { type: String}
-});
 var user = mongoose.model('User',userSchema);
 var appCategory = mongoose.model('appCategory',appCategorySchema);
-var gview =mongoose.model('gview',gViewSchema);
-var lview =mongoose.model('lview',lViewSchema);
-var category = mongoose.model('Category',categorySchema);
-var posts =mongoose.model('Posts',postSchema);
-var dbLogger = mongoose.model('dbLogger', loggingSchema);
+var drawerList = mongoose.model('drawerList',drawerListSchema);
+var trendingList =mongoose.model('trendingList',trendingListSchema);
+var dbLogger = mongoose.model('dbLogger', dbLoggingSchema);
 
 module.exports = {
   User         : user,
   AppCategory  : appCategory,
-  Gview        : gview,
-  Lview        : lview,
-  Category     : category,
-  Posts        : posts,
+  DrawerList   : drawerList,
+  TrendingList : trendingList,
   DBLogger     : dbLogger
 
 
