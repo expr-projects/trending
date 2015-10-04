@@ -40,7 +40,7 @@ router.get('/', function(request, response) {
   //  }
 
 
-router.post('/',isLoggedIn,function(request,response){
+router.post('/',function(request,response){
 
   var   appCategoryEntry = new AppCategory();
         appCategoryEntry.category.music.playlist  = request.body.category.music.playlist;
