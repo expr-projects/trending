@@ -5,7 +5,7 @@ var AppCategory = require('../models/dbmodel').AppCategory;
 
 router.get('/', function(request, response) {
           response.setHeader('Content-Type', 'application/json');
-          AppCategory.find({}).exec(function(req ,res,next){
+          AppCategory.findOne().exec(function(req ,res,next){
           response.send(JSON.stringify(res));
         });
   });

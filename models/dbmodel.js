@@ -91,7 +91,7 @@ var trendingListSchema = new Schema({
 
 var dbLoggingSchema = new Schema({
       logTime          : { type: Date, required: true, default : Date.now()}
-    , token 			 : { type: String, required: true, index: { unique: true }}
+    , token 			     : { type: String, required: true, index: { unique: true }}
     , transactionType  : { type: String}
     , expiryDate       : { type: String}
 });
