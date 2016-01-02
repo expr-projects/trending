@@ -5,17 +5,40 @@ var users = require('../routes/users');
 var trending =require('../routes/trending');
 var appCategory =require('../routes/appcategory');
 var drawerList =require('../routes/drawerlist');
+var about = require('../routes/about');
+var theme = require('../routes/theme');
+var dashboard = require('../routes/dashboard');
+var blog = require('../routes/blog');
+var company =require('../routes/company');
+var landing = require('../routes/landing');
+var creative = require('../routes/creative');
+var admindashboard = require('../routes/admindashboard');
+var forms = require('../routes/forms');
+var morris = require('../routes/morris');
+var flot = require('../routes/flot');
+var tables = require('../routes/tables');
 module.exports = function(app, passport) {
 
     // normal routes ===============================================================
     app.get('/', function(req, res) {
         res.render('index.ejs');
     });
+    app.use('/tables',tables);
+    app.use('/flot',flot);
+    app.use('/forms',forms);
+    app.use('/morris',morris);
+    app.use('/admindashboard',admindashboard);
+    app.use('/landing',landing);
+    app.use('/creative',creative);
     app.use('/menu',appCategory);
     app.use('/users',isLoggedIn,users);
     app.use('/trending',trending);
     app.use('/drawerlist',drawerList);
-
+    app.use('/about',about);
+    app.use('/theme',theme);
+    app.use('/dashboard',dashboard);
+    app.use('/company',company);
+    app.use('/blog',blog);
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
         res.render('profile.ejs', {

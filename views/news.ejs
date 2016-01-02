@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+   <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+<style>
+.navbar-search {
+  height: inherit;
+  min-width:inherit;
+  margin-top: 11px;
+  margin-left: 2px;
+  margin-right: 2px;
+  float: inherit;
+}
+@media (min-width: 768px) {
+  .navbar-search{
+    width:700px;
+  };
+  }
+</style>
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+
+      <div class="container">
+        <button type="button1" class="navbar-toggle" >
+          <a href="#menu-toggle" id="menu-toggle">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </a>
+        </button>
+        <a class="navbar-brand" href="#">Tutorials</a>
+        <input type="text" class="navbar-search" id="inputSuccess2">
+
+      </div>
+
+  </nav>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">Start Bootstrap </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#menu-toggle2" id="menu-toggle2">Services</a>
+                </li>
+                <li>
+                    <a href="#menu-toggle1" id="menu-toggle1">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+
+    <script>
+    $("#menu-toggle2").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    $("#menu-toggle1").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
