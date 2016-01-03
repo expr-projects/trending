@@ -18,6 +18,7 @@ var morris = require('../routes/morris');
 var flot = require('../routes/flot');
 var tables = require('../routes/tables');
 var log = require('loglevel');
+var schools = require('../routes/schools');
 
 module.exports = function(app, passport) {
 
@@ -25,6 +26,7 @@ module.exports = function(app, passport) {
     app.get('/', function(req, res) {
         res.render('index.ejs');
     });
+    app.use('/schools',schools);
     app.use('/tables',tables);
     app.use('/flot',flot);
     app.use('/forms',forms);
