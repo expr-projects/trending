@@ -19,6 +19,8 @@ var flot = require('../routes/flot');
 var tables = require('../routes/tables');
 var log = require('loglevel');
 var schools = require('../routes/schools');
+var grampanchayat = require('../routes/grampanchayat');
+var healthcare = require('../routes/healthcare');
 
 module.exports = function(app, passport) {
 
@@ -26,6 +28,8 @@ module.exports = function(app, passport) {
     app.get('/', function(req, res) {
         res.render('index.ejs');
     });
+    app.use('/grampanchayat',grampanchayat);
+    app.use('/healthcare',healthcare);
     app.use('/schools',schools);
     app.use('/tables',tables);
     app.use('/flot',flot);
