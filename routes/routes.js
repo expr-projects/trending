@@ -17,6 +17,8 @@ var forms = require('../routes/forms');
 var morris = require('../routes/morris');
 var flot = require('../routes/flot');
 var tables = require('../routes/tables');
+var log = require('loglevel');
+
 module.exports = function(app, passport) {
 
     // normal routes ===============================================================
@@ -73,7 +75,7 @@ module.exports = function(app, passport) {
         app.get('/login', function(req, res) {
             res.render('login.ejs', { message: req.flash('loginMessage') });
         });
-
+        log.info("unreasonably simple");
         // process the login form
         app.post('/login', passport.authenticate('local-login', {
             successRedirect : '/profile', // redirect to the secure profile section
