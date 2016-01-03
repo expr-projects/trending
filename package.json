@@ -35,8 +35,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rohtash/nodejs.git"
+    "url": "https://github.com/rohtash/trending.git"
   },
 
-  "homepage": "https://github.com/rohtash/nodejs"
+  "homepage": "https://github.com/rohtash/trending"
 }
