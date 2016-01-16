@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var async = require('async');
-var AppCategory = require('../models/dbmodel').AppCategory;
+var AppCategory = require('../../models/dbmodel').AppCategory;
 
 router.get('/', function(request, response) {
           response.setHeader('Content-Type', 'application/json');

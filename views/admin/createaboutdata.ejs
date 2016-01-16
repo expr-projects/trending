@@ -10,25 +10,26 @@
     <meta name="author" content="">
 
     <title>Web Admin DashBoard</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-
     <!-- MetisMenu CSS -->
     <link href="../css/metisMenu.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="../css/sb-admin-2.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <style>
+    .modal-header, h4, .close {
+        background-color: #5cb85c;
+        color:white !important;
+        text-align: center;
+        font-size: 30px;
+    }
+    .modal-footer {
+        background-color: #f9f9f9;
+    }
+    </style>
 
 </head>
 
@@ -274,25 +275,28 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="\admindashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="\admin\admindashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="\flot">Flot Charts</a>
+                                    <a href="\admin\flot">Flot Charts</a>
                                 </li>
                                 <li>
-                                    <a href="\morris">Morris.js Charts</a>
+                                    <a href="\admin\morris">Morris.js Charts</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="\tables"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="\admin\tables"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
                         <li>
-                            <a href="\forms"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            <a href="\admin\forms"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                        </li>
+                        <li>
+                            <a href="\admin\createaboutdata"><i class="fa fa-edit fa-fw"></i>Create Entries</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
@@ -382,184 +386,11 @@
                             Basic Form Elements
                         </div>
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <form role="form">
-                                        <div class="form-group">
-                                            <label>Text Input</label>
-                                            <input class="form-control">
-                                            <p class="help-block">Example block-level help text here.</p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Text Input with Placeholder</label>
-                                            <input class="form-control" placeholder="Enter text">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Static Control</label>
-                                            <p class="form-control-static">email@example.com</p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>File input</label>
-                                            <input type="file">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Text area</label>
-                                            <textarea class="form-control" rows="3"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Checkboxes</label>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="">Checkbox 1
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="">Checkbox 2
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="">Checkbox 3
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Inline Checkboxes</label>
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox">1
-                                            </label>
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox">2
-                                            </label>
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox">3
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Radio Buttons</label>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Radio 1
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Radio 2
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Radio 3
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Inline Radio Buttons</label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Selects</label>
-                                            <select class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Multiple Selects</label>
-                                            <select multiple class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
-                                    </form>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                                <div class="col-lg-6">
-                                    <h1>Disabled Form States</h1>
-                                    <form role="form">
-                                        <fieldset disabled>
-                                            <div class="form-group">
-                                                <label for="disabledSelect">Disabled input</label>
-                                                <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="disabledSelect">Disabled select menu</label>
-                                                <select id="disabledSelect" class="form-control">
-                                                    <option>Disabled select</option>
-                                                </select>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox">Disabled Checkbox
-                                                </label>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Disabled Button</button>
-                                        </fieldset>
-                                    </form>
-                                    <h1>Form Validation States</h1>
-                                    <form role="form">
-                                        <div class="form-group has-success">
-                                            <label class="control-label" for="inputSuccess">Input with success</label>
-                                            <input type="text" class="form-control" id="inputSuccess">
-                                        </div>
-                                        <div class="form-group has-warning">
-                                            <label class="control-label" for="inputWarning">Input with warning</label>
-                                            <input type="text" class="form-control" id="inputWarning">
-                                        </div>
-                                        <div class="form-group has-error">
-                                            <label class="control-label" for="inputError">Input with error</label>
-                                            <input type="text" class="form-control" id="inputError">
-                                        </div>
-                                    </form>
-                                    <h1>Input Groups</h1>
-                                    <form role="form">
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon">@</span>
-                                            <input type="text" class="form-control" placeholder="Username">
-                                        </div>
-                                        <div class="form-group input-group">
-                                            <input type="text" class="form-control">
-                                            <span class="input-group-addon">.00</span>
-                                        </div>
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon"><i class="fa fa-eur"></i>
-                                            </span>
-                                            <input type="text" class="form-control" placeholder="Font Awesome Icon">
-                                        </div>
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon">$</span>
-                                            <input type="text" class="form-control">
-                                            <span class="input-group-addon">.00</span>
-                                        </div>
-                                        <div class="form-group input-group">
-                                            <input type="text" class="form-control">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                            </div>
-                            <!-- /.row (nested) -->
+                          <button type="button"  class="btn btn-primary" id="myBtn">Create Entry in Abuot</button>
+                          <button type="button"  class="btn btn-primary" id="myBtn1">Create Entry in Gallery</button>
+                          <button type="button"  class="btn btn-primary" id="myBtn2">Create Entry in Team or Staff</button>
+
+
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -570,21 +401,97 @@
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="testdemo"><span class="glyphicon glyphicon-lock"></span>New Entry in ABout</h4>
+              </div>
+              <div class="modal-body" style="padding:40px 50px;">
+                <form role="form" id="form1" action="/teamStaff" method="post">
+                  <div class="form-group">
+                    <label id="headtext"for="headingtext"><span class="glyphicon"></span>Heading</label>
+                    <input type="text" class="form-control" id="headingtext" name="headingtext" placeholder="Enter Heading">
+                  </div>
+                  <div class="form-group">
+                    <label id="detai"for="details"><span class="glyphicon"></span>Description</label>
+                    <input type="text" class="form-control" id="details" name="details" placeholder="Enter Detailed Description">
+                  </div>
+                  <div class="form-group">
+                    <label for="imageUrl"><span class="glyphicon"></span>Image</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter image Url">
+                  </div>
+                  <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Create</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
     </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../js/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
+    <script src="../js/extra/metisMenu.min.js"></script>
     <script src="../js/sb-admin-2.js"></script>
+
+    <script>
+    $(document).ready(function(){
+        $("#myBtn").click(function(){
+          var ele =document.getElementById('form1');
+          ele.setAttribute("action","/about")
+          var e1=document.getElementById('testdemo');
+          e1.innerHTML ="Create Entry in About";
+          var e2=document.getElementById('headtext');
+          e2.innerHTML ="Phase Heading";
+          e2.setAttribute("placeholder","Enter Heading");
+          var e3=document.getElementById('detai');
+          e3.innerHTML ="Description";
+          e3.setAttribute("placeholder","Enter Deailed Description")
+
+            $("#myModal").modal();
+
+        });
+
+        $("#myBtn1").click(function(){
+          var ele =document.getElementById('form1');
+          ele.setAttribute("action","/gallery");
+          var e1=document.getElementById('testdemo');
+          e1.innerHTML ="Create Entry in Gallery";
+          var e2=document.getElementById('headtext');
+          e2.innerHTML ="Description";
+          e2.setAttribute("placeholder","Enter Heading");
+          var e3=document.getElementById('detai');
+          e3.innerHTML ="Detailed Description";
+          e3.setAttribute("placeholder","Enter Description")
+            $("#myModal").modal();
+        });
+
+        $("#myBtn2").click(function(){
+          var ele =document.getElementById('form1');
+          ele.setAttribute("action","/teamStaff");
+          var e1=document.getElementById('testdemo');
+          e1.innerHTML ="Create Entry For New Member";
+          var e2=document.getElementById('headtext');
+          e2.innerHTML ="MemberName";
+          e2.setAttribute("placeholder","Enter Member Name");
+          var e3=document.getElementById('detai');
+          e3.innerHTML ="RoleName";
+          e3.setAttribute("placeholder","Enter  Description")
+            $("#myModal").modal();
+        });
+    });
+    </script>
 
 </body>
 

@@ -1,30 +1,22 @@
 var express = require('express');
 var router = express.Router();
-var About = require('../models/dbmodel').About;
+var TeamStaff = require('../models/dbmodel').TeamStaff;
 
 router.get('/', function(request, response) {
-    var abc;
-          response.setHeader('Content-Type', 'application/json');
-          About.find().exec(function(req ,res,next){
-          response.send(JSON.stringify(res));
-          abc=res;
-          });
 
-
-          response.render('test.ejs'
-          );
+    response.render('createaboutdata.ejs');
 });
 //post format for aboutSchema
 // {
-//      "headingtext" : "entertainment"
-//     ,"details" : ""
+//      "memberName" : "entertainment"
+//     ,"roleName" : ""
 //     ,"imageUrl" :""
 //
 // }
 router.post('/', function(request, response) {
-  var   newaboutSchema = new About();
-        newaboutSchema.headingtext = request.body.headingtext;
-        newaboutSchema.details = request.body.details;
+  var   newaboutSchema = new TeamStaff();
+        newaboutSchema.memberName = request.body.headingtext;
+        newaboutSchema.roleName = request.body.details;
         newaboutSchema.imageUrl = request.body.imageUrl;
 
 

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var TrendingList = require('../models/dbmodel').TrendingList;
+var TrendingList = require('../../models/dbmodel').TrendingList;
 
 router.get('/', function(request, response) {
           response.setHeader('Content-Type', 'application/json');

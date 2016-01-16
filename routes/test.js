@@ -6,9 +6,9 @@ var Gallery = require('../models/dbmodel').Gallery;
 var TeamStaff = require('../models/dbmodel').TeamStaff;
 router.get('/', function(request, response) {
         About.find().exec(function(req ,res,next){
-          Gallery.find().exec(function(req1 ,res1,next1){
-            TeamStaff.find().exec(function(req2 ,res2,next2){
-      response.render('schools.ejs',{about :res, gallery :res1, teamStaff :res2});
+          TeamStaff.find().exec(function(req1 ,res1,next1){
+            Gallery.find().exec(function(req2 ,res2,next2){
+      response.render('test.ejs',{data :res,teamStaff :res1,gallary :res2});
         });
       });
     });

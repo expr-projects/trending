@@ -12,6 +12,7 @@
     "body-parser": "~1.8.1",
     "express-session":"latest",
     "jade":"latest",
+    "express-multiple-views":"latest",
     "morgan":"latest",
     "multer":"latest",
     "method-override":"latest",

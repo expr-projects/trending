@@ -1,6 +1,7 @@
 
 var express = require('express')
-    , http = require('http')
+    ,multipleViews = require('express-multiple-views')
+    ,http = require('http')
     ,morgan = require('morgan')
     ,cookieParser = require('cookie-parser')
     ,mongoose = require('mongoose')
@@ -31,6 +32,9 @@ mongoose.connect(configDB.url, function (err, res) {
 require('./config/passport')(passport);
 app.set('port', process.env.PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
+
+multipleViews(app, path.join(__dirname, 'views/extra'));
+multipleViews(app, path.join(__dirname, 'views/admin'));
 app.set('view engine', 'ejs');
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(morgan('dev'));

@@ -1,18 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var About = require('../models/dbmodel').About;
+var About = require('../../models/dbmodel').About;
 
 router.get('/', function(request, response) {
-    var abc;
-          response.setHeader('Content-Type', 'application/json');
-          About.find().exec(function(req ,res,next){
-          response.send(JSON.stringify(res));
-          abc=res;
-          });
 
-
-          response.render('test.ejs'
-          );
+    response.render('createaboutdata.ejs');
 });
 //post format for aboutSchema
 // {

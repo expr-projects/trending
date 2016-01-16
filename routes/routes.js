@@ -2,51 +2,79 @@
 var express= require('express');
 var router = express.Router();
 var users = require('../routes/users');
-var trending =require('../routes/trending');
-var appCategory =require('../routes/appcategory');
-var drawerList =require('../routes/drawerlist');
-var about = require('../routes/about');
-var theme = require('../routes/theme');
-var dashboard = require('../routes/dashboard');
-var blog = require('../routes/blog');
-var company =require('../routes/company');
-var landing = require('../routes/landing');
-var creative = require('../routes/creative');
-var admindashboard = require('../routes/admindashboard');
-var forms = require('../routes/forms');
-var morris = require('../routes/morris');
-var flot = require('../routes/flot');
-var tables = require('../routes/tables');
-var log = require('loglevel');
-var schools = require('../routes/schools');
+//**************extra routes****************************************************
+var appCategory =require('../routes/extra/appcategory');
+var drawerList =require('../routes/extra/drawerlist');
+var dashboard = require('../routes/extra/dashboard');
+var creative = require('../routes/extra/creative');
+var trending =require('../routes/extra/trending');
+var company =require('../routes/extra/company');
+var landing = require('../routes/extra/landing');
+var theme = require('../routes/extra/theme');
+var blog = require('../routes/extra/blog');
+
+//admin dashboard **************************************************************
+var createaboutdata = require('../routes/admin/createaboutdata');
+var admindashboard = require('../routes/admin/admindashboard');
+var tables = require('../routes/admin/tables');
+var morris = require('../routes/admin/morris');
+var forms = require('../routes/admin/forms');
+var flot = require('../routes/admin/flot');
+
+//*****Main Routing ************************************************************
 var grampanchayat = require('../routes/grampanchayat');
 var healthcare = require('../routes/healthcare');
+var teamStaff = require('../routes/team_staff');
+var gallery = require('../routes/gallerydata');
+var schools = require('../routes/schools');
+var about = require('../routes/about');
+var test = require('../routes/test');
+var log = require('loglevel');
+
+//******************DB Model Call for index page********************************
+var Gallery = require('../models/dbmodel').Gallery;
+var About = require('../models/dbmodel').About;
 
 module.exports = function(app, passport) {
 
-    // normal routes ===============================================================
-    app.get('/', function(req, res) {
-        res.render('index.ejs');
-    });
+//admin routes =================================================================
+    app.use('/admin/createaboutdata',createaboutdata);
+    app.use('/admin/admindashboard',admindashboard);
+    app.use('/admin/morris',morris);
+    app.use('/admin/tables',tables);
+    app.use('/admin/forms',forms);
+    app.use('/admin/flot',flot);
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     app.use('/grampanchayat',grampanchayat);
-    app.use('/healthcare',healthcare);
-    app.use('/schools',schools);
-    app.use('/tables',tables);
-    app.use('/flot',flot);
-    app.use('/forms',forms);
-    app.use('/morris',morris);
-    app.use('/admindashboard',admindashboard);
-    app.use('/landing',landing);
-    app.use('/creative',creative);
-    app.use('/menu',appCategory);
     app.use('/users',isLoggedIn,users);
-    app.use('/trending',trending);
-    app.use('/drawerlist',drawerList);
+    app.use('/healthcare',healthcare);
+    app.use('/teamStaff',teamStaff);
+    app.use('/menu',appCategory);
+    app.use('/gallery',gallery);
+    app.use('/schools',schools);
     app.use('/about',about);
-    app.use('/theme',theme);
-    app.use('/dashboard',dashboard);
-    app.use('/company',company);
-    app.use('/blog',blog);
+    app.use('/test',test);
+
+//***********************extra routing******************************************
+    app.use('/extra/drawerlist',drawerList);
+    app.use('/extra/dashboard',dashboard);
+    app.use('/extra/trending',trending);
+    app.use('/extra/creative',creative);
+    app.use('/extra/company',company);
+    app.use('/extra/landing',landing);
+    app.use('/extra/theme',theme);
+    app.use('/extra/blog',blog);
+
+//Home Section +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    app.get('/', function(req, res) {
+      About.find().exec(function(req1 ,res1,next1){
+        Gallery.find().exec(function(req2 ,res2,next2){
+    res.render('index.ejs',{about :res1, gallery :res2, message: req.flash('loginMessage')});
+      });
+    });
+    });
+
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
         res.render('profile.ejs', {
@@ -79,20 +107,20 @@ module.exports = function(app, passport) {
         // LOGIN ===============================
         // show the login form
         app.get('/login', function(req, res) {
-            res.render('login.ejs', { message: req.flash('loginMessage') });
+            res.render('schools.ejs', { message: req.flash('loginMessage') });
         });
         log.info("unreasonably simple");
         // process the login form
         app.post('/login', passport.authenticate('local-login', {
             successRedirect : '/profile', // redirect to the secure profile section
-            failureRedirect : '/login', // redirect back to the signup page if there is an error
+            failureRedirect : '/', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
 
         // SIGNUP =================================
         // show the signup form
         app.get('/signup', function(req, res) {
-            res.render('signup.ejs', { message: req.flash('signupMessage') });
+            res.render('index.ejs', { message: req.flash('signupMessage') });
         });
 
         // process the signup form

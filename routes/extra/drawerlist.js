@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var drawerList = require('../models/dbmodel').DrawerList;
+var drawerList = require('../../models/dbmodel').DrawerList;
 
 router.get('/', function(request, response) {
           response.setHeader('Content-Type', 'application/json');

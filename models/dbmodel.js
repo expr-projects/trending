@@ -96,18 +96,39 @@ var dbLoggingSchema = new Schema({
     , expiryDate       : { type: String}
 });
 
+var aboutSchema = new Schema({
+      headingtext          : { type: String}
+    , details   			     : { type: String}
+    , imageUrl             : { type: String}
+});
+var gallerySchema = new Schema({
+      heading              : { type: String}
+    , description   			 : { type: String}
+    , imageUrl             : { type: String}
+});
+var teamStaffSchema = new Schema({
+      memberName           : { type: String}
+    , roleName      			 : { type: String}
+    , imageUrl             : { type: String}
+});
 var user = mongoose.model('User',userSchema);
 var appCategory = mongoose.model('appCategory',appCategorySchema);
 var drawerList = mongoose.model('drawerList',drawerListSchema);
 var trendingList =mongoose.model('trendingList',trendingListSchema);
 var dbLogger = mongoose.model('dbLogger', dbLoggingSchema);
+var about =mongoose.model('about',aboutSchema);
+var gallery=mongoose.model('gallery',gallerySchema);
+var teamStaff =mongoose.model('teamStaff',teamStaffSchema);
 
 module.exports = {
   User         : user,
   AppCategory  : appCategory,
   DrawerList   : drawerList,
   TrendingList : trendingList,
-  DBLogger     : dbLogger
+  DBLogger     : dbLogger,
+  About        : about,
+  Gallery      : gallery,
+  TeamStaff    : teamStaff
 
 
 };

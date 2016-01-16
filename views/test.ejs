@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Schools</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/agency.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<script>
+
+function setatt(image,head,details){
+
+  var asd=document.getElementById("set_image");
+  asd.setAttribute("src",image);
+  document.getElementById("set_headtext").innerHtml =head;
+
+  document.getElementById("set_detail").innerHtml =details;
+
+}
+</script>
+</head>
+<body >
+  <section id="staff" class="bg-light-gray">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12 text-center">
+                  <h2 class="section-heading">Our Amazing Staff</h2>
+                  <h3 class="section-subheading text-muted">Dedicated to Provide Web Service for Jhansal.</h3>
+              </div>
+          </div>
+          <div class="row">
+      <% for(var i=0; i < teamStaff.length; i++) { %>
+              <div class="col-sm-4">
+                  <div class="team-member">
+                      <img src=<%= teamStaff[i].imageUrl %> class="img-responsive img-circle" alt="">
+                      <h4><%= teamStaff[i].memberName %></h4>
+                      <p class="text-muted"><%= teamStaff[i].roleName %></p>
+                      <ul class="list-inline social-buttons">
+                        <li><a href="https://twitter.com/rohtashpoonia"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="https://www.facebook.com/rohtashpoonia6"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="https://in.linkedin.com/in/rohtash-poonia-511b8429"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                      </ul>
+                  </div>
+              </div>
+        <% } %>
+
+          </div>
+          <div class="row">
+              <div class="col-lg-8 col-lg-offset-2 text-center">
+                <!--  <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+  -->
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+<section id="gallery" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Gallery</h2>
+                <h3 class="section-subheading text-muted">Pics of Heritages we have.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+
+          <% for(var i=0; i < gallary.length; i++) { %>
+
+            <div class="col-md-4 col-sm-6 portfolio-item" >
+                <a href="#1" onclick="setatt('<%= gallary[i].imageUrl %>','<%= gallary[i].headingtext %>','<%= gallary[i].details %>')" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <!-- <i class="fa fa-plus fa-3x"></i> -->
+                        </div>
+                    </div>
+                    <img  id="imagelink"src=<%= gallary[i].imageUrl %> class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4 id="headtext"><%= gallary[i].headingtext %></h4>
+                    <p class="text-muted" id="detailstext"><%= gallary[i].details %></p>
+                </div>
+            </div>
+           <% } %>
+        </div>
+
+    </div>
+
+</section>
+<div  class="portfolio-modal modal fade" id="1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+            </div>
+            </div>
+        </div>
+        <div class="container" >
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body" id="expand_image">
+                        <h2 id="set_headtext">Project Heading</h2>
+                        <p id="set_detail" class="item-intro text-muted">test</p>
+                        <img id="set_image" class="img-responsive img-centered" src="" alt="">
+                        <p><a href="http://designmodo.com/startup/?u=787">detaisld</a>  hundreds of solutions for your future projects.</p>
+                        <p>You can preview Startup Framework <a href="http://designmodo.com/startup/?u=787">here</a>.</p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div  class="col-lg-12">
+    <ul id="ul1" class="timeline">
+      <% for(var i=0; i < data.length; i++) { %>
+        <% if (i%2==0) {%>
+         <li>
+      <% } else { %>
+        <li class="timeline-inverted">
+          <% } %>
+            <div class="timeline-image">
+              <a href= <%= data[i].imageUrl %> > <img class="img-circle img-responsive" src=<%= data[i].imageUrl %> alt="">
+              </a>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="subheading"><%= data[i].headingtext %></h4>
+                </div>
+                <div class="timeline-body">
+                    <p class="text-muted">
+                      <%= data[i].details %> </p>
+                </div>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</div>
+
+
+</body>
+</html>

@@ -1,18 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var About = require('../models/dbmodel').About;
+var Gallery = require('../models/dbmodel').Gallery;
 
 router.get('/', function(request, response) {
-    var abc;
-          response.setHeader('Content-Type', 'application/json');
-          About.find().exec(function(req ,res,next){
-          response.send(JSON.stringify(res));
-          abc=res;
-          });
 
-
-          response.render('test.ejs'
-          );
+    response.render('createaboutdata.ejs');
 });
 //post format for aboutSchema
 // {
@@ -22,9 +14,9 @@ router.get('/', function(request, response) {
 //
 // }
 router.post('/', function(request, response) {
-  var   newaboutSchema = new About();
-        newaboutSchema.headingtext = request.body.headingtext;
-        newaboutSchema.details = request.body.details;
+  var   newaboutSchema = new Gallery();
+        newaboutSchema.heading = request.body.headingtext;
+        newaboutSchema.description = request.body.details;
         newaboutSchema.imageUrl = request.body.imageUrl;
 
 
