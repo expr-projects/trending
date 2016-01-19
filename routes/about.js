@@ -26,7 +26,7 @@ router.post('/', function(request, response) {
         newaboutSchema.headingtext = request.body.headingtext;
         newaboutSchema.details = request.body.details;
         newaboutSchema.imageUrl = request.body.imageUrl;
-
+        newaboutSchema.appCode = request.body.appCode;
 
         newaboutSchema.save(function (err) {
 

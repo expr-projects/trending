@@ -422,6 +422,9 @@
                     <input type="text" class="form-control" id="details" name="details" placeholder="Enter Detailed Description">
                   </div>
                   <div class="form-group">
+                    <input type="hidden" class="form-control" id="appcode"name="appCode" value='2'>
+                  </div>
+                  <div class="form-group">
                     <label for="imageUrl"><span class="glyphicon"></span>Image</label>
                     <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter image Url">
                   </div>
@@ -458,6 +461,8 @@
           var e3=document.getElementById('detai');
           e3.innerHTML ="Description";
           e3.setAttribute("placeholder","Enter Deailed Description")
+          var e4=document.getElementById('appcode');
+          e4.setAttribute("value",4)
 
             $("#myModal").modal();
 
@@ -474,6 +479,8 @@
           var e3=document.getElementById('detai');
           e3.innerHTML ="Detailed Description";
           e3.setAttribute("placeholder","Enter Description")
+          var e4=document.getElementById('appcode');
+          e4.setAttribute("value",2)
             $("#myModal").modal();
         });
 
@@ -488,6 +495,8 @@
           var e3=document.getElementById('detai');
           e3.innerHTML ="RoleName";
           e3.setAttribute("placeholder","Enter  Description")
+          var e4=document.getElementById('appcode');
+          e4.setAttribute("value",3)
             $("#myModal").modal();
         });
     });

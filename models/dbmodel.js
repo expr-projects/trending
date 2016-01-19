@@ -96,19 +96,33 @@ var dbLoggingSchema = new Schema({
     , expiryDate       : { type: String}
 });
 
-var aboutSchema = new Schema({
-      headingtext          : { type: String}
-    , details   			     : { type: String}
-    , imageUrl             : { type: String}
-});
+
 var gallerySchema = new Schema({
       heading              : { type: String}
+    , appCode              : { type: Number}
     , description   			 : { type: String}
     , imageUrl             : { type: String}
 });
 var teamStaffSchema = new Schema({
       memberName           : { type: String}
+    , appCode              : { type: Number}
     , roleName      			 : { type: String}
+    , imageUrl             : { type: String}
+});
+var fileUpload = new Schema({
+      url              : { type: String}
+    , thumbnailUrl     : { type: String}
+    , name             : { type: String}
+    , type             : { type: String}
+    , size             : { type: String}
+    , deleteUrl        : { type: String}
+    , deleteType       : { type: String}
+
+});
+var aboutSchema = new Schema({
+      headingtext          : { type: String}
+    , appCode              : { type: Number}
+    , details   			     : { type: String}
     , imageUrl             : { type: String}
 });
 var user = mongoose.model('User',userSchema);
@@ -119,6 +133,7 @@ var dbLogger = mongoose.model('dbLogger', dbLoggingSchema);
 var about =mongoose.model('about',aboutSchema);
 var gallery=mongoose.model('gallery',gallerySchema);
 var teamStaff =mongoose.model('teamStaff',teamStaffSchema);
+var fileUpload=mongoose.model('fileupload',fileUpload);
 
 module.exports = {
   User         : user,
@@ -128,7 +143,8 @@ module.exports = {
   DBLogger     : dbLogger,
   About        : about,
   Gallery      : gallery,
-  TeamStaff    : teamStaff
+  TeamStaff    : teamStaff,
+  fileUpload   :fileUpload
 
 
 };

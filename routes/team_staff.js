@@ -14,13 +14,13 @@ router.get('/', function(request, response) {
 //
 // }
 router.post('/', function(request, response) {
-  var   newaboutSchema = new TeamStaff();
-        newaboutSchema.memberName = request.body.headingtext;
-        newaboutSchema.roleName = request.body.details;
-        newaboutSchema.imageUrl = request.body.imageUrl;
+  var   newTeamStaffSchema = new TeamStaff();
+        newTeamStaffSchema.memberName = request.body.headingtext;
+        newTeamStaffSchema.roleName = request.body.details;
+        newTeamStaffSchema.imageUrl = request.body.imageUrl;
+        newTeamStaffSchema.imageUrl = request.body.imageUrl;
 
-
-        newaboutSchema.save(function (err) {
+        newTeamStaffSchema.save(function (err) {
 
           if (err){
             //logger.error(message + '400 | Database insertion failed');

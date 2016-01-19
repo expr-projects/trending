@@ -1,10 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var Gallery = require('../models/dbmodel').Gallery;
+var About = require('../models/dbmodel').About;
 
 router.get('/', function(request, response) {
+    var abc;
+          response.setHeader('Content-Type', 'application/json');
+          About.find().exec(function(req ,res,next){
+          response.send(JSON.stringify(res));
+          abc=res;
+          });
 
-    response.render('createaboutdata.ejs');
+
+          response.render('test.ejs'
+          );
 });
 //post format for aboutSchema
 // {
@@ -14,13 +22,13 @@ router.get('/', function(request, response) {
 //
 // }
 router.post('/', function(request, response) {
-  var   newGallerySchema = new Gallery();
-        newGallerySchema.heading = request.body.headingtext;
-        newGallerySchema.description = request.body.details;
-        newGallerySchema.imageUrl = request.body.imageUrl;
-        newGallerySchema.appCode = request.body.appCode;
+  var   newaboutSchema = new About();
+        newaboutSchema.headingtext = request.body.headingtext;
+        newaboutSchema.details = request.body.details;
+        newaboutSchema.imageUrl = request.body.imageUrl;
 
-        newGallerySchema.save(function (err) {
+
+        newaboutSchema.save(function (err) {
 
           if (err){
             //logger.error(message + '400 | Database insertion failed');
