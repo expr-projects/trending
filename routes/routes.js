@@ -16,18 +16,21 @@ module.exports = function(app, passport) {
 
 //admin routes =================================================================
     app.use('/admin/admindashboard', require('../routes/admin/admindashboard'));
-
+    app.use('/admin/admindashboard/teamStaff',require('../routes/admin/team_staffdata'));
+    app.use('/admin/admindashboard/pageheading',require('../routes/admin/pageheadingdata'));
+    app.use('/admin/admindashboard/gallery',require('../routes/admin/gallerydata'));
+    app.use('/admin/admindashboard/about',require('../routes/admin/aboutdata'));
+    app.use('/admin/admindashboard/services',require('../routes/admin/servicesdata'));
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     app.use('/grampanchayat',require('../routes/grampanchayat'));
     app.use('/users',isLoggedIn,require('../routes/users'));
     app.use('/healthcare',require('../routes/healthcare'));
-    app.use('/teamStaff',require('../routes/team_staffdata'));
-    app.use('/pageheading',require('../routes/pageheadingdata'));
+
     app.use('/menu',require('../routes/extra/appcategory'));
-    app.use('/services',require('../routes/servicesdata'));
-    app.use('/gallery',require('../routes/gallerydata'));
+
+
     app.use('/schools',require('../routes/schools'));
-    app.use('/about',require('../routes/aboutdata'));
+
     app.use('/test',require('../routes/test'));
 
 //***********************extra routing******************************************

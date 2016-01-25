@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Services = require('../models/webmodel').Services;
+var Services = require('../../models/webmodel').Services;
 
 router.post('/' ,function(request, response) {
 

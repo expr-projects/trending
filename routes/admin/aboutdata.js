@@ -2,7 +2,7 @@ var express = require('express');
 var fs=require('fs');
 var multer = require('multer');
 var router = express.Router();
-var About = require('../models/webmodel').About;
+var About = require('../../models/webmodel').About;
 
 
 router.post('/', multer({ dest: './uploads' }).single('image'), function(request, response) {
