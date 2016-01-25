@@ -1,38 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var About = require('../../models/dbmodel').About;
+var About = require('../../models/webmodel').About;
 
-router.get('/', function(request, response) {
 
-    response.render('createaboutdata.ejs');
-});
-//post format for aboutSchema
-// {
-//      "headingtext" : "entertainment"
-//     ,"details" : ""
-//     ,"imageUrl" :""
-//
-// }
 router.post('/', function(request, response) {
-  var   newaboutSchema = new About();
-        newaboutSchema.headingtext = request.body.headingtext;
-        newaboutSchema.details = request.body.details;
-        newaboutSchema.imageUrl = request.body.imageUrl;
-        newaboutSchema.appCode = request.body.appCode;
 
-        newaboutSchema.save(function (err) {
-
+  var   newSchema = new About();
+        newSchema.customizingId = request.body.customizingId;
+        newSchema.headingtext = request.body.headingtext;
+        newSchema.headingdescription = request.body.headingdescription;
+        newSchema.image.data = fs.readFileSync(request.file.path).toString('base64');
+        newSchema.image.contentType = request.file.mimetype;
+        newSchema.save(function (err) {
           if (err){
             //logger.error(message + '400 | Database insertion failed');
             return next(err);
           }
           else {
-            response.setHeader('Content-Type', 'application/json');
-
-            response.send(JSON.stringify("Succefully updated"));
+            response.render('/admin/admindashboard/createaboutdata', { message: "New Entry data for about" });
           }
         });
 
 });
-
 module.exports = router;

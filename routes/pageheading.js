@@ -1,22 +1,25 @@
 var express = require('express');
 var router = express.Router();
 var fs=require('fs');
-var multer = require('multer');
-var Gallery = require('../models/webmodel').Gallery;
+var Pageheading = require('../models/webmodel').Pageheading;
 
 router.get('/', function(request, response) {
 
-    response.render('createaboutdata.ejs');
+          Pageheading.find().exec(function(req ,headingdata,next){
+
+            response.render('test.ejs',{headingdata :headingdata} );
+
+          });
 });
 
-router.post('/', multer({ dest: './uploads' }).single('image'), function(request, response) {
+router.post('/', function(request, response) {
 var imgPath = './public/images/1.jpg';
-  var   newSchema = new Gallery();
+  var   newSchema = new Pageheading();
         newSchema.customizingId = request.body.customizingId;
         newSchema.headingtext = request.body.headingtext;
         newSchema.headingdescription = request.body.headingdescription;
-        newSchema.image.data = fs.readFileSync(request.file.path).toString('base64');
-        newSchema.image.contentType = request.file.mimetype;
+        newSchema.image = fs.readFileSync(imgPath).toString('base64');
+        newSchema.image.contentType= 'jpg'
         newSchema.save(function (err) {
           if (err){
             //logger.error(message + '400 | Database insertion failed');

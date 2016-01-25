@@ -11,13 +11,16 @@
 
     <title>Web Admin DashBoard</title>
     <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="../../css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
     <!-- MetisMenu CSS -->
-    <link href="../css/metisMenu.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <link href="../../css/metisMenu.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <link href="../../css/sb-admin-2.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <style>
     .modal-header, h4, .close {
@@ -380,6 +383,9 @@
             </div>
             <!-- /.row -->
             <div class="row">
+              <% if (message.length > 0) { %>
+                  <div class="alert alert-danger"><%= message %></div>
+              <% } %>
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -411,24 +417,31 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 id="testdemo"><span class="glyphicon glyphicon-lock"></span>New Entry in ABout</h4>
               </div>
+
               <div class="modal-body" style="padding:40px 50px;">
-                <form role="form" id="form1" action="/teamStaff" method="post">
+                <form role="form" id="form1" action="/about" method="post" enctype="multipart/form-data">
                   <div class="form-group">
-                    <label id="headtext"for="headingtext"><span class="glyphicon"></span>Heading</label>
-                    <input type="text" class="form-control" id="headingtext" name="headingtext" placeholder="Enter Heading">
+                     <label for="customizing">Select Page:</label>
+                     <select class="form-control" name="customizingId" id="customizing">
+                       <option>Jhansal</option>
+                       <option>School</option>
+                       <option>Grampanchayat</option>
+                     </select>
                   </div>
                   <div class="form-group">
-                    <label id="detai"for="details"><span class="glyphicon"></span>Description</label>
-                    <input type="text" class="form-control" id="details" name="details" placeholder="Enter Detailed Description">
+                    <label id="headingl"for="heading"><span class="glyphicon"></span>Heading</label>
+                    <input type="text" class="form-control" id="heading" name="headingtext" placeholder="Enter Heading">
+                  </div>
+
+                  <div class="form-group">
+                    <label id="descriptionl" for="description"><span class="glyphicon"></span>Description</label>
+                    <input type="text" class="form-control" id="description" name="headingdescription" placeholder="Enter Description">
                   </div>
                   <div class="form-group">
-                    <input type="hidden" class="form-control" id="appcode"name="appCode" value='2'>
+                    <label id="imagesl" for="images"><span class="glyphicon"></span>Select Image</label>
+                    <input type="file" class="filestyle" name="image" accept="image/*" id="images" data-buttonName="btn-primary" required="true">
                   </div>
-                  <div class="form-group">
-                    <label for="imageUrl"><span class="glyphicon"></span>Image</label>
-                    <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter image Url">
-                  </div>
-                  <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Create</button>
+                  <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span>Create</button>
                 </form>
               </div>
               <div class="modal-footer">
@@ -443,26 +456,40 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/extra/metisMenu.min.js"></script>
-    <script src="../js/sb-admin-2.js"></script>
+    <!-- <script src="../../js/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <!-- <script src="../../js/bootstrap.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-filestyle.min.js"> </script>
+    <script src="../../js/extra/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <!-- <script src="../../js/raphael-min.js"></script> -->
+    <!-- <script src="../../js/morris.min.js"></script> -->
+    <!-- <script src="../../js/extra/morris-data.js"></script> -->
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../../js/sb-admin-2.js"></script>
 
     <script>
+    $(":file").filestyle({buttonName: "btn-primary"});
     $(document).ready(function(){
         $("#myBtn").click(function(){
           var ele =document.getElementById('form1');
           ele.setAttribute("action","/about")
-          var e1=document.getElementById('testdemo');
-          e1.innerHTML ="Create Entry in About";
-          var e2=document.getElementById('headtext');
-          e2.innerHTML ="Phase Heading";
-          e2.setAttribute("placeholder","Enter Heading");
-          var e3=document.getElementById('detai');
-          e3.innerHTML ="Description";
-          e3.setAttribute("placeholder","Enter Deailed Description")
-          var e4=document.getElementById('appcode');
-          e4.setAttribute("value",4)
+          // var e1=document.getElementById('testdemo');
+          // e1.innerHTML ="Create Entry in About";
+          // var e2=document.getElementById('customizing');
+          // e2.innerHTML ="Phase Heading";
+          // e2.setAttribute("placeholder","Enter Heading");
+          // var e3=document.getElementById('detai');
+          // e3.innerHTML ="Description";
+          // e3.setAttribute("placeholder","Enter Deailed Description")
+          // var e4=document.getElementById('appcode');
+          // e4.setAttribute("value",4)
 
             $("#myModal").modal();
 
@@ -471,32 +498,32 @@
         $("#myBtn1").click(function(){
           var ele =document.getElementById('form1');
           ele.setAttribute("action","/gallery");
-          var e1=document.getElementById('testdemo');
-          e1.innerHTML ="Create Entry in Gallery";
-          var e2=document.getElementById('headtext');
-          e2.innerHTML ="Description";
-          e2.setAttribute("placeholder","Enter Heading");
-          var e3=document.getElementById('detai');
-          e3.innerHTML ="Detailed Description";
-          e3.setAttribute("placeholder","Enter Description")
-          var e4=document.getElementById('appcode');
-          e4.setAttribute("value",2)
+          // var e1=document.getElementById('testdemo');
+          // e1.innerHTML ="Create Entry in Gallery";
+          // var e2=document.getElementById('headtext');
+          // e2.innerHTML ="Description";
+          // e2.setAttribute("placeholder","Enter Heading");
+          // var e3=document.getElementById('detai');
+          // e3.innerHTML ="Detailed Description";
+          // e3.setAttribute("placeholder","Enter Description")
+          // var e4=document.getElementById('appcode');
+          // e4.setAttribute("value",2)
             $("#myModal").modal();
         });
 
         $("#myBtn2").click(function(){
           var ele =document.getElementById('form1');
           ele.setAttribute("action","/teamStaff");
-          var e1=document.getElementById('testdemo');
-          e1.innerHTML ="Create Entry For New Member";
-          var e2=document.getElementById('headtext');
-          e2.innerHTML ="MemberName";
-          e2.setAttribute("placeholder","Enter Member Name");
-          var e3=document.getElementById('detai');
-          e3.innerHTML ="RoleName";
-          e3.setAttribute("placeholder","Enter  Description")
-          var e4=document.getElementById('appcode');
-          e4.setAttribute("value",3)
+          // var e1=document.getElementById('testdemo');
+          // e1.innerHTML ="Create Entry For New Member";
+          // var e2=document.getElementById('headtext');
+          // e2.innerHTML ="MemberName";
+          // e2.setAttribute("placeholder","Enter Member Name");
+          // var e3=document.getElementById('detai');
+          // e3.innerHTML ="RoleName";
+          // e3.setAttribute("placeholder","Enter  Description")
+          // var e4=document.getElementById('appcode');
+          // e4.setAttribute("value",3)
             $("#myModal").modal();
         });
     });

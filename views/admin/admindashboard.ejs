@@ -277,22 +277,22 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="\admin\flot">Flot Charts</a>
+                                    <a href="\admin\admindashboard\flot">Flot Charts</a>
                                 </li>
                                 <li>
-                                    <a href="\admin\morris">Morris.js Charts</a>
+                                    <a href="\admin\admindashboard\morris">Morris.js Charts</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="\admin\tables"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="\admin\admindashboard\tables"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
                         <li>
-                            <a href="\admin\forms"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            <a href="\admin\admindashboard\forms"><i class="fa fa-edit fa-fw"></i> Forms</a>
                         </li>
                         <li>
-                            <a href="\admin\createaboutdata"><i class="fa fa-edit fa-fw"></i>Create Entries</a>
+                            <a href="\admin\admindashboard\createaboutdata"><i class="fa fa-edit fa-fw"></i>Create Entries</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
@@ -387,6 +387,10 @@
                                     <div class="huge">26</div>
                                     <div>New Comments!</div>
                                 </div>
+                                <% if (message.length > 0) { %>
+                                    <div class="alert alert-danger"><%= message %></div>
+                                <% } %>
+
                             </div>
                         </div>
                         <a href="/createaboutdata">

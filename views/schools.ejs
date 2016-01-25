@@ -11,6 +11,7 @@
 
     <title>Schools</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mycss.css" rel="stylesheet">
     <link href="css/agency.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -136,7 +137,7 @@
         </div>
     </section>
 
-    <!-- Gallery Grid Section -->
+<!-- **************** Start of Gallery Grid Section ************************************-->
     <section id="gallery" class="bg-light-gray">
         <div class="container">
             <div class="row">
@@ -148,17 +149,17 @@
             <div class="row">
               <% for(var i=0; i < gallery.length; i++) { %>
                 <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a  href="#1" onclick="setatt('<%= gallery[i].imageUrl %>','<%= gallery[i].headingtext %>','<%= gallery[i].details %>')" class="portfolio-link" data-toggle="modal">
+                    <a  href="#1" onclick="setatt('data:<%= gallery[i].image.contentType %>;base64,<%= gallery[i].image.data %>','<%= gallery[i].headingtext %>','<%= gallery[i].details %>')" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <!-- <i class="fa fa-plus fa-3x"></i> -->
                             </div>
                         </div>
-                        <img src=<%= gallery[i].imageUrl %> class="img-responsive" alt="">
+                        <img src="data:<%= gallery[i].image.contentType %>;base64,<%= gallery[i].image.data %>" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4><%= gallery[i].heading %></h4>
-                        <p class="text-muted"><%= gallery[i].description %></p>
+                        <h4><%= gallery[i].headingtext %></h4>
+                        <p class="text-muted"><%= gallery[i].headingdescription %></p>
                     </div>
                 </div>
                <% } %>
@@ -166,7 +167,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+<!-- *********************** Start of About Section *************************************** -->
     <section id="about">
         <div class="container">
             <div class="row">
@@ -185,7 +186,8 @@
                         <li class="timeline-inverted">
                           <% } %>
                             <div class="timeline-image">
-                              <a href= <%= about[i].imageUrl %> > <img class="img-circle img-responsive" src=<%= about[i].imageUrl %> alt="">
+                              <a href="#1" onclick="setatt('data:<%= about[i].image.contentType %>;base64,<%= about[i].image.data %>','<%= about[i].headingtext %>','<%= about[i].headingdescription %>')" >
+                                 <img class="img-circle img-responsive" src="data:<%= about[i].image.contentType %>;base64,<%= about[i].image.data %>" , width="450", height="450", alt="">
                               </a>
                             </div>
                             <div class="timeline-panel">
@@ -194,7 +196,7 @@
                                 </div>
                                 <div class="timeline-body">
                                     <p class="text-muted">
-                                      <%= about[i].details %> </p>
+                                      <%= about[i].headingdescription %> </p>
                                 </div>
                             </div>
                         </li>
@@ -212,7 +214,7 @@
         </div>
     </section>
 
-    <!-- staff Section -->
+<!--**************** Start of staff Section ************************************************ -->
     <section id="staff" class="bg-light-gray">
         <div class="container">
             <div class="row">
@@ -225,17 +227,17 @@
         <% for(var i=0; i < teamStaff.length; i++) { %>
             <div class="col-sm-4">
                 <div class="team-member"  >
-                    <a href="#1" onclick="setatt('<%= teamStaff[i].imageUrl %>','<%= teamStaff[i].memberName %>','<%= teamStaff[i].roleName %>')" class="portfolio-link" data-toggle="modal">
-                        <img src=<%= teamStaff[i].imageUrl %> class="img-responsive img-circle" alt="">
-                        <h4><%= teamStaff[i].memberName %></h4>
-                        <p class="text-muted"><%= teamStaff[i].roleName %></p>
+                    <a href="#1" onclick="setatt('data:<%= teamStaff[i].image.contentType %>;base64,<%= teamStaff[i].image.data %>','<%= teamStaff[i].name %>','<%= teamStaff[i].role %>')" class="portfolio-link" data-toggle="modal">
+                        <img src="data:<%= teamStaff[i].image.contentType %>;base64,<%= teamStaff[i].image.data %>" class="img-responsive img-circle" alt="">
+                        <h4><%= teamStaff[i].name %></h4>
+                        <p class="text-muted"><%= teamStaff[i].role %></p>
                     </a>
                         <ul class="list-inline social-buttons">
-                          <li><a href="https://twitter.com/rohtashpoonia"><i class="fa fa-twitter"></i></a>
+                          <li><a href=<%= teamStaff[i].t_link %> > <i class="fa fa-twitter"></i></a>
                           </li>
-                          <li><a href="https://www.facebook.com/rohtashpoonia6"><i class="fa fa-facebook"></i></a>
+                          <li><a href=<%= teamStaff[i].f_link %> ><i class="fa fa-facebook"></i></a>
                           </li>
-                          <li><a href="https://in.linkedin.com/in/rohtash-poonia-511b8429"><i class="fa fa-linkedin"></i></a>
+                          <li><a href=<%= teamStaff[i].lin_link %> ><i class="fa fa-linkedin"></i></a>
                           </li>
                         </ul>
                  </div>
@@ -243,12 +245,7 @@
           <% } %>
 
             </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                  <!--  <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-    -->
-                </div>
-            </div>
+
         </div>
     </section>
     <!-- Clients Aside -->
@@ -279,7 +276,7 @@
         </div>
     </aside>
 
-    <!-- Contact Section -->
+<!-- ************************************Start of Contact Section *********************************-->
     <section id="contact">
         <div class="container">
             <div class="row">
@@ -323,7 +320,7 @@
             </div>
         </div>
     </section>
-
+<!-- ************************************start static footer**************************** -->
     <footer>
         <div class="container">
             <div class="row">
@@ -352,9 +349,8 @@
         </div>
     </footer>
 
-    <!-- Portfolio Modals -->
-    <!-- Use the modals below to showcase details about your portfolio projects! -->
-=
+<!-- Start of Portfolio Modals************************************************************************* -->
+<!-- Use the modals below to showcase details about your portfolio projects! -->
 
     <div  class="portfolio-modal modal fade" id="1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
@@ -382,7 +378,8 @@
             </div>
         </div>
     </div>
-<!-- ---------------login popup ---------------------------- -->
+<!-- ********************************************end of portfolio model***********************************     -->
+<!-- ******************login popup************************************************************************ -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
 
@@ -417,7 +414,7 @@
       </div>
     </div>
   </div>
-
+<!-- ***************************End of Login PopUP*********************************************************** -->
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

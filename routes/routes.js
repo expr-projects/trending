@@ -1,70 +1,46 @@
 // var mongoose = require('mongoose');
 var express= require('express');
 var router = express.Router();
-var users = require('../routes/users');
-//**************extra routes****************************************************
-var appCategory =require('../routes/extra/appcategory');
-var drawerList =require('../routes/extra/drawerlist');
-var dashboard = require('../routes/extra/dashboard');
-var creative = require('../routes/extra/creative');
-var trending =require('../routes/extra/trending');
-var company =require('../routes/extra/company');
-var landing = require('../routes/extra/landing');
-var theme = require('../routes/extra/theme');
-var blog = require('../routes/extra/blog');
 
-//admin dashboard **************************************************************
-var createaboutdata = require('../routes/admin/createaboutdata');
-var admindashboard = require('../routes/admin/admindashboard');
-var tables = require('../routes/admin/tables');
-var morris = require('../routes/admin/morris');
-var forms = require('../routes/admin/forms');
-var flot = require('../routes/admin/flot');
+
 
 //*****Main Routing ************************************************************
-var grampanchayat = require('../routes/grampanchayat');
-var healthcare = require('../routes/healthcare');
-var teamStaff = require('../routes/team_staff');
-var gallery = require('../routes/gallerydata');
-var schools = require('../routes/schools');
-var about = require('../routes/about');
-var test = require('../routes/test');
+
 var log = require('loglevel');
 
 //******************DB Model Call for index page********************************
-var Gallery = require('../models/dbmodel').Gallery;
-var About = require('../models/dbmodel').About;
+var Gallery = require('../models/webmodel').Gallery;
+var About = require('../models/webmodel').About;
 
 module.exports = function(app, passport) {
 
 //admin routes =================================================================
-    app.use('/admin/createaboutdata',createaboutdata);
-    app.use('/admin/admindashboard',admindashboard);
-    app.use('/admin/morris',morris);
-    app.use('/admin/tables',tables);
-    app.use('/admin/forms',forms);
-    app.use('/admin/flot',flot);
-
+    app.use('/admin/createaboutdata',require('../routes/admin/createaboutdata'));
+    app.use('/admin/admindashboard', require('../routes/admin/admindashboard'));
+    // app.use('/admin/morris', require('../routes/admin/morris'));
+    // app.use('/admin/tables',require('../routes/admin/tables'));
+    // app.use('/admin/forms',require('../routes/admin/forms'));
+    // app.use('/admin/flot',require('../routes/admin/flot'));
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    app.use('/grampanchayat',grampanchayat);
-    app.use('/users',isLoggedIn,users);
-    app.use('/healthcare',healthcare);
-    app.use('/teamStaff',teamStaff);
-    app.use('/menu',appCategory);
-    app.use('/gallery',gallery);
-    app.use('/schools',schools);
-    app.use('/about',about);
-    app.use('/test',test);
+    app.use('/grampanchayat',require('../routes/grampanchayat'));
+    app.use('/users',isLoggedIn,require('../routes/users'));
+    app.use('/healthcare',require('../routes/healthcare'));
+    app.use('/teamStaff',require('../routes/team_staffdata'));
+    app.use('/menu',require('../routes/extra/appcategory'));
+    app.use('/gallery',require('../routes/gallerydata'));
+    app.use('/schools',require('../routes/schools'));
+    app.use('/about',require('../routes/aboutdata'));
+    app.use('/test',require('../routes/test'));
 
 //***********************extra routing******************************************
-    app.use('/extra/drawerlist',drawerList);
-    app.use('/extra/dashboard',dashboard);
-    app.use('/extra/trending',trending);
-    app.use('/extra/creative',creative);
-    app.use('/extra/company',company);
-    app.use('/extra/landing',landing);
-    app.use('/extra/theme',theme);
-    app.use('/extra/blog',blog);
+    app.use('/extra/drawerlist',require('../routes/extra/drawerlist'));
+    app.use('/extra/dashboard',require('../routes/extra/dashboard'));
+    app.use('/extra/trending',require('../routes/extra/trending'));
+    app.use('/extra/creative',require('../routes/extra/creative'));
+    app.use('/extra/company',require('../routes/extra/company'));
+    app.use('/extra/landing',require('../routes/extra/landing'));
+    app.use('/extra/theme',require('../routes/extra/theme'));
+    app.use('/extra/blog',require('../routes/extra/blog'));
 
 //Home Section +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     app.get('/', function(req, res) {

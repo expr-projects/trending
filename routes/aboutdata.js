@@ -1,17 +1,21 @@
 var express = require('express');
-var router = express.Router();
 var fs=require('fs');
 var multer = require('multer');
-var Gallery = require('../models/webmodel').Gallery;
+var router = express.Router();
+var About = require('../models/webmodel').About;
 
-router.get('/', function(request, response) {
-
-    response.render('createaboutdata.ejs');
-});
+// router.get('/', function(request, response) {
+//
+//           About.find().exec(function(req ,abouts,next){
+//
+//             response.render('test.ejs',{abouts :abouts} );
+//
+//           });
+// });
 
 router.post('/', multer({ dest: './uploads' }).single('image'), function(request, response) {
-var imgPath = './public/images/1.jpg';
-  var   newSchema = new Gallery();
+
+  var   newSchema = new About();
         newSchema.customizingId = request.body.customizingId;
         newSchema.headingtext = request.body.headingtext;
         newSchema.headingdescription = request.body.headingdescription;
@@ -23,8 +27,14 @@ var imgPath = './public/images/1.jpg';
             return next(err);
           }
           else {
-            response.setHeader('Content-Type', 'application/json');
-            response.send(JSON.stringify("Succefully updated"));
+            fs.unlink(request.file.path, function(err) {
+              // check for errors
+              if(err) {
+                // go to the error handler middleware
+                return next(err);
+              }
+            });
+        response.render('createaboutdata.ejs', { message: "Succefully updated" });
           }
         });
 

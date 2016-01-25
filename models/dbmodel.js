@@ -97,18 +97,7 @@ var dbLoggingSchema = new Schema({
 });
 
 
-var gallerySchema = new Schema({
-      heading              : { type: String}
-    , appCode              : { type: Number}
-    , description   			 : { type: String}
-    , imageUrl             : { type: String}
-});
-var teamStaffSchema = new Schema({
-      memberName           : { type: String}
-    , appCode              : { type: Number}
-    , roleName      			 : { type: String}
-    , imageUrl             : { type: String}
-});
+
 var fileUpload = new Schema({
       url              : { type: String}
     , thumbnailUrl     : { type: String}
@@ -119,21 +108,33 @@ var fileUpload = new Schema({
     , deleteType       : { type: String}
 
 });
-var aboutSchema = new Schema({
-      headingtext          : { type: String}
-    , appCode              : { type: Number}
-    , details   			     : { type: String}
-    , imageUrl             : { type: String}
+
+var productSchema   = new Schema({
+
+    idProduct: {
+        type: mongoose.Schema.Types.ObjectId,
+        index: true
+    },
+    category: {type: String},
+    product: {type: String},
+    model: {type: String},
+    brand: {type: String},
+    size: {type: String},
+    price: {type: String},
+    description: {type: String},
+    color : {type: String},
+    quantity: {type: Number},
+    image: { data: Buffer, contentType: String },
+    uploadDate: {type: Date, default: Date.now}
 });
+
 var user = mongoose.model('User',userSchema);
 var appCategory = mongoose.model('appCategory',appCategorySchema);
 var drawerList = mongoose.model('drawerList',drawerListSchema);
 var trendingList =mongoose.model('trendingList',trendingListSchema);
 var dbLogger = mongoose.model('dbLogger', dbLoggingSchema);
-var about =mongoose.model('about',aboutSchema);
-var gallery=mongoose.model('gallery',gallerySchema);
-var teamStaff =mongoose.model('teamStaff',teamStaffSchema);
 var fileUpload=mongoose.model('fileupload',fileUpload);
+var product =mongoose.model('product',productSchema)
 
 module.exports = {
   User         : user,
@@ -141,11 +142,8 @@ module.exports = {
   DrawerList   : drawerList,
   TrendingList : trendingList,
   DBLogger     : dbLogger,
-  About        : about,
-  Gallery      : gallery,
-  TeamStaff    : teamStaff,
-  fileUpload   :fileUpload
-
+  fileUpload   :fileUpload,
+  Product      :product
 
 };
 // location: {
