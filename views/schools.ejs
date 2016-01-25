@@ -149,7 +149,7 @@
             <div class="row">
               <% for(var i=0; i < gallery.length; i++) { %>
                 <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a  href="#1" onclick="setatt('data:<%= gallery[i].image.contentType %>;base64,<%= gallery[i].image.data %>','<%= gallery[i].headingtext %>','<%= gallery[i].details %>')" class="portfolio-link" data-toggle="modal">
+                    <a  href="#1" onclick="setatt('data:<%= gallery[i].image.contentType %>;base64,<%= gallery[i].image.data %>','<%= gallery[i].headingtext %>','<%= gallery[i].headingdescription %>')" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <!-- <i class="fa fa-plus fa-3x"></i> -->
@@ -186,7 +186,7 @@
                         <li class="timeline-inverted">
                           <% } %>
                             <div class="timeline-image">
-                              <a href="#1" onclick="setatt('data:<%= about[i].image.contentType %>;base64,<%= about[i].image.data %>','<%= about[i].headingtext %>','<%= about[i].headingdescription %>')" >
+                            <a  href="#1" onclick="setatt('data:<%= about[i].image.contentType %>;base64,<%= about[i].image.data %>','<%= about[i].headingtext %>','<%= about[i].headingdescription %>')" class="portfolio-link" data-toggle="modal">
                                  <img class="img-circle img-responsive" src="data:<%= about[i].image.contentType %>;base64,<%= about[i].image.data %>" , width="450", height="450", alt="">
                               </a>
                             </div>
@@ -227,7 +227,7 @@
         <% for(var i=0; i < teamStaff.length; i++) { %>
             <div class="col-sm-4">
                 <div class="team-member"  >
-                    <a href="#1" onclick="setatt('data:<%= teamStaff[i].image.contentType %>;base64,<%= teamStaff[i].image.data %>','<%= teamStaff[i].name %>','<%= teamStaff[i].role %>')" class="portfolio-link" data-toggle="modal">
+                  <a  href="#1" onclick="setatt('data:<%= teamStaff[i].image.contentType %>;base64,<%= teamStaff[i].image.data %>','<%= teamStaff[i].name %>','<%= teamStaff[i].role %>')" class="portfolio-link" data-toggle="modal">
                         <img src="data:<%= teamStaff[i].image.contentType %>;base64,<%= teamStaff[i].image.data %>" class="img-responsive img-circle" alt="">
                         <h4><%= teamStaff[i].name %></h4>
                         <p class="text-muted"><%= teamStaff[i].role %></p>
@@ -366,11 +366,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body" id="expand_image">
-                            <h2 id="set_headtext">Profile</h2>
-                            <p id="set_detail" class="item-intro text-muted">test</p>
                             <img id="set_image" class="img-responsive img-centered" src="" alt="">
-
-                            <p>For More Details Click <a >here</a>.</p>
+                            <h4 id="set_headtext">Profile</h4>
+                             <p id="set_detail" class="item-intro text-muted">test</p>
                             <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close </button>
                         </div>
                     </div>
@@ -426,9 +424,9 @@
 
       var asd=document.getElementById("set_image");
       asd.setAttribute("src",image);
-      document.getElementById("set_headtext").innerHtml =head;
+      document.getElementById("set_headtext").innerHTML =head;
 
-      document.getElementById("set_detail").innerHtml =details;
+      document.getElementById("set_detail").innerHTML =details;
 
     }
 
