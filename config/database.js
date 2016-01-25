@@ -1,8 +1,7 @@
 module.exports = {
-	'url'	: process.env.MONGOHQ_URL
-					|| process.env.MONGOLAB_URI
-					||'mongodb://localhost/appdb'
-					||'mongodb://poonia:poonia@ds051738.mongolab.com:51738/trendingdb'
+	'url'	: 'mongodb://poonia:poonia@ds043062.mongolab.com:43062/jhansaldb'
+
+									||'mongodb://localhost/appdb'
 
 
 }
