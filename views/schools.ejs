@@ -105,15 +105,17 @@
                 </div>
             </div>
             <div class="row text-center">
+              <% for(var i=0; i < service.length; i++) { %>
                 <div class="col-md-4">
                   <a href="/schools">  <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
+                        <i class="fa <%= service[i].icon %> fa-stack-1x fa-inverse"></i>
                     </span></a>
-                    <h4 class="service-heading">Academic Information</h4>
-                    <p class="text-muted">Fee structure , Academic Calender etc.</p>
+                    <h4 class="service-heading"><%= service[i].headingtext %></h4>
+                    <p class="text-muted"><%= service[i].headingdescription %></p>
                 </div>
-                <div class="col-md-4">
+                 <% } %>
+                <!-- <div class="col-md-4">
                   <a href="/healthcare">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -132,7 +134,7 @@
                   </a>
                     <h4 class="service-heading">Examination</h4>
                     <p class="text-muted">Exam and result details.</p>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

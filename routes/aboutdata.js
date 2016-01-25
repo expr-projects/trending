@@ -4,14 +4,6 @@ var multer = require('multer');
 var router = express.Router();
 var About = require('../models/webmodel').About;
 
-// router.get('/', function(request, response) {
-//
-//           About.find().exec(function(req ,abouts,next){
-//
-//             response.render('test.ejs',{abouts :abouts} );
-//
-//           });
-// });
 
 router.post('/', multer({ dest: './uploads' }).single('image'), function(request, response) {
 
@@ -34,7 +26,7 @@ router.post('/', multer({ dest: './uploads' }).single('image'), function(request
                 return next(err);
               }
             });
-        response.render('createaboutdata.ejs', { message: "Succefully updated" });
+        response.redirect('/admin/admindashboard/createaboutdata', { message: "Succefully updated" });
           }
         });
 

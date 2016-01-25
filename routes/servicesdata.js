@@ -1,25 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var About = require('../../models/webmodel').About;
+var Services = require('../models/webmodel').Services;
 
+router.post('/' ,function(request, response) {
 
-router.post('/', function(request, response) {
-
-  var   newSchema = new About();
+  var   newSchema = new Services();
         newSchema.customizingId = request.body.customizingId;
         newSchema.headingtext = request.body.headingtext;
         newSchema.headingdescription = request.body.headingdescription;
-        newSchema.image.data = fs.readFileSync(request.file.path).toString('base64');
-        newSchema.image.contentType = request.file.mimetype;
+        newSchema.icon = request.body.icon;
         newSchema.save(function (err) {
           if (err){
             //logger.error(message + '400 | Database insertion failed');
             return next(err);
           }
           else {
-            response.render('/admin/admindashboard/createaboutdata', { message: "New Entry data for about" });
+
+        response.redirect('/admin/admindashboard/createaboutdata', { message: "Succefully updated" });
           }
         });
 
 });
+
 module.exports = router;

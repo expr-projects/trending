@@ -394,7 +394,9 @@
                         <div class="panel-body">
                           <button type="button"  class="btn btn-primary" id="myBtn">Create Entry in Abuot</button>
                           <button type="button"  class="btn btn-primary" id="myBtn1">Create Entry in Gallery</button>
-                          <button type="button"  class="btn btn-primary" id="myBtn2">Create Entry in Team or Staff</button>
+                          <button type="button"  class="btn btn-primary" id="myBtn2">Create Entry in Team </button>
+                          <button type="button"  class="btn btn-primary" id="myBtn3">Create Entry in Services</button>
+                          <button type="button"  class="btn btn-primary" id="myBtn4">Create Entry in Page headingdescription</button>
 
 
                         </div>
@@ -437,10 +439,63 @@
                     <label id="descriptionl" for="description"><span class="glyphicon"></span>Description</label>
                     <input type="text" class="form-control" id="description" name="headingdescription" placeholder="Enter Description">
                   </div>
-                  <div class="form-group">
+
+                  <div  class="form-group">
                     <label id="imagesl" for="images"><span class="glyphicon"></span>Select Image</label>
                     <input type="file" class="filestyle" name="image" accept="image/*" id="images" data-buttonName="btn-primary" required="true">
                   </div>
+
+                  <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span>Create</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal1" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="testdemo1"><span class="glyphicon glyphicon-lock"></span>New Entry in ABout</h4>
+              </div>
+
+              <div class="modal-body" style="padding:40px 50px;">
+                <form role="form" id="form2" action="/services" method="post" >
+                  <div class="form-group">
+                     <label for="customizing">Select Page:</label>
+                     <select class="form-control" name="customizingId" id="customizing">
+                       <option>Jhansal</option>
+                       <option>School</option>
+                       <option>Grampanchayat</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                    <label id="headingl"for="heading"><span class="glyphicon"></span>Heading</label>
+                    <input type="text" class="form-control" id="heading" name="headingtext" placeholder="Enter Heading">
+                  </div>
+
+                  <div class="form-group">
+                    <label id="descriptionl" for="description"><span class="glyphicon"></span>Description</label>
+                    <input type="text" class="form-control" id="description" name="headingdescription" placeholder="Enter Description">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="iconid">Select Page:</label>
+                     <select class="form-control" name="icon" id="iconid">
+                       <option>fa-medkit</option>
+                       <option>fa-legal</option>
+                       <option>fa-graduation-cap</option>
+                     </select>
+                  </div>
+
                   <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span>Create</button>
                 </form>
               </div>
@@ -478,10 +533,11 @@
     $(":file").filestyle({buttonName: "btn-primary"});
     $(document).ready(function(){
         $("#myBtn").click(function(){
+
           var ele =document.getElementById('form1');
           ele.setAttribute("action","/about")
-          // var e1=document.getElementById('testdemo');
-          // e1.innerHTML ="Create Entry in About";
+          var e1=document.getElementById('testdemo');
+          e1.innerHTML ="Create Entry in About";
           // var e2=document.getElementById('customizing');
           // e2.innerHTML ="Phase Heading";
           // e2.setAttribute("placeholder","Enter Heading");
@@ -496,10 +552,11 @@
         });
 
         $("#myBtn1").click(function(){
+
           var ele =document.getElementById('form1');
           ele.setAttribute("action","/gallery");
-          // var e1=document.getElementById('testdemo');
-          // e1.innerHTML ="Create Entry in Gallery";
+          var e1=document.getElementById('testdemo');
+          e1.innerHTML ="Create Entry in Gallery";
           // var e2=document.getElementById('headtext');
           // e2.innerHTML ="Description";
           // e2.setAttribute("placeholder","Enter Heading");
@@ -512,10 +569,43 @@
         });
 
         $("#myBtn2").click(function(){
+
           var ele =document.getElementById('form1');
           ele.setAttribute("action","/teamStaff");
-          // var e1=document.getElementById('testdemo');
-          // e1.innerHTML ="Create Entry For New Member";
+          var e1=document.getElementById('testdemo');
+          e1.innerHTML ="Create Entry For New Member";
+          // var e2=document.getElementById('headtext');
+          // e2.innerHTML ="MemberName";
+          // e2.setAttribute("placeholder","Enter Member Name");
+          // var e3=document.getElementById('detai');
+          // e3.innerHTML ="RoleName";
+          // e3.setAttribute("placeholder","Enter  Description")
+          // var e4=document.getElementById('appcode');
+          // e4.setAttribute("value",3)
+            $("#myModal").modal();
+        });
+        $("#myBtn3").click(function(){
+
+          var ele =document.getElementById('form2');
+          ele.setAttribute("action","/services");
+          var e1=document.getElementById('testdemo1');
+          e1.innerHTML ="Create Entry For New Services";
+          // var e2=document.getElementById('headtext');
+          // e2.innerHTML ="MemberName";
+          // e2.setAttribute("placeholder","Enter Member Name");
+          // var e3=document.getElementById('detai');
+          // e3.innerHTML ="RoleName";
+          // e3.setAttribute("placeholder","Enter  Description")
+          // var e4=document.getElementById('appcode');
+          // e4.setAttribute("value",3)
+            $("#myModal1").modal();
+        });
+        $("#myBtn4").click(function(){
+
+          var ele =document.getElementById('form1');
+          ele.setAttribute("action","/pageheading");
+          var e1=document.getElementById('testdemo');
+          e1.innerHTML ="Create Entry For New Page Heading";
           // var e2=document.getElementById('headtext');
           // e2.innerHTML ="MemberName";
           // e2.setAttribute("placeholder","Enter Member Name");

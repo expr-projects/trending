@@ -15,18 +15,16 @@ var About = require('../models/webmodel').About;
 module.exports = function(app, passport) {
 
 //admin routes =================================================================
-    app.use('/admin/createaboutdata',require('../routes/admin/createaboutdata'));
     app.use('/admin/admindashboard', require('../routes/admin/admindashboard'));
-    // app.use('/admin/morris', require('../routes/admin/morris'));
-    // app.use('/admin/tables',require('../routes/admin/tables'));
-    // app.use('/admin/forms',require('../routes/admin/forms'));
-    // app.use('/admin/flot',require('../routes/admin/flot'));
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     app.use('/grampanchayat',require('../routes/grampanchayat'));
     app.use('/users',isLoggedIn,require('../routes/users'));
     app.use('/healthcare',require('../routes/healthcare'));
     app.use('/teamStaff',require('../routes/team_staffdata'));
+    app.use('/pageheading',require('../routes/pageheadingdata'));
     app.use('/menu',require('../routes/extra/appcategory'));
+    app.use('/services',require('../routes/servicesdata'));
     app.use('/gallery',require('../routes/gallerydata'));
     app.use('/schools',require('../routes/schools'));
     app.use('/about',require('../routes/aboutdata'));
